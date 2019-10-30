@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="row">
+    <div class="panel-heading">
+      <h3 class="panel-title">Account Statements 
+      | <button class="btn btn-primary" (click)="redirectTo('new')">
+          Add New
+        </button>
+      </h3>
+      <div class="pull-right">
+        <!-- <button class="btn btn-default btn-xs btn-filter">
+          <span class="glyphicon glyphicon-filter"></span>
+          Filter
+        </button> -->
+        <div class="form-group ">
+            <label for="transactionType"  class="col-sm-2 col-form-label">Filter: </label>
+            <div class="col-sm-10">
+              <select 
+                name="filter" 
+                id="filter"  
+                class="form-control"
+                [(ngModel)]="filterAll">
+                <option value="">Select</option>
+                <option value="for:Donation">Donation</option>
+                <option value="type:Credit">Credit</option>
+                <option value="type:Debit">Debit</option>
+                <option value="for:Monthly">Monthly Contribution</option>
+                <option value="for:other">Other</option>
+              </select>
+            </div>
+          </div>
+      </div>
+    </div>    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr class="filters">
+            <th style="width: 25px;">#</th>
+            <th>Date</th>
+            <th style="width: 85px;">Type</th>
+            <th style="width: 85px;">Mode</th>
+            <th style="width: 200px;">From/To</th>
+            <th>Details</th>
+            <th>Credit</th>
+            <th>Debit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>
+              <!-- <input type="text" name="mode" [(ngModel)]="typeFilter" style="width: 50px;"> -->
+            </td>
+            <td>
+              <!-- <input type="text" name="mode" [(ngModel)]="modeFilter" style="width: 50px;"> -->
+            </td>
+            <td>
+              <input type="text" name="mode" [(ngModel)]="contributorName">
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr
+            *ngFor="let transaction of allTransaction | filterRecord: contributorName: typeFilter: modeFilter : filterAll; let i = index">
+            <td>{{i + 1 }}</td>
+            <td>{{transaction.date | date: 'mediumDate'}}</td>
+            <td>{{transaction.type}}</td>
+            <td>{{transaction.mode}}</td>
+            <td>{{transaction.contributerName}}</td>
+            <td>{{transaction.details}}</td>
+            <td>
+              <span *ngIf="transaction.type === 'credit'">
+                {{transaction.amount}} CR
+              </span>
+            </td>
+            <td>
+              <span *ngIf="transaction.type !== 'credit'">
+                -{{transaction.amount}} CR
+              </span>
+            </td>
+          </tr>
+          <tr *ngIf="isFetching">
+            <td colspan="8" class="text-center">
+              <app-loader></app-loader>
+            </td>
+          </tr>          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button mat-raised-button>Button</button>
+  <mat-form-field>
+    <input matInput placeholder="Filter">
+  </mat-form-field>
+</div>

@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header bg-success text-center">
+        <strong>Credit</strong>
+      </div>
+      <div class="card-body text-center">
+        <app-inprogress *ngIf="isCalculating"></app-inprogress>
+        <span style="font-weight: bold;" *ngIf="!isCalculating">&#8377; {{totalCredit}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header bg-danger text-center"><strong>Debit</strong></div>
+      <div class="card-body text-center">
+        <app-inprogress *ngIf="isCalculating"></app-inprogress>
+        <span style="font-weight: bold;"  *ngIf="!isCalculating">&#8377;{{totalDebit}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-header bg-info text-center"><strong>Available</strong></div>
+      <div class="card-body text-center">
+        <app-inprogress *ngIf="isCalculating"></app-inprogress>
+        <span style="font-weight: bold;"  *ngIf="!isCalculating">&#8377;{{totalCredit - totalDebit}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br />
