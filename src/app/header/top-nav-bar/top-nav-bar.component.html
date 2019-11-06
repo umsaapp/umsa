@@ -13,11 +13,27 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
           <a class="dropdown-item" [routerLink]="['dashboard', 'all']">All Transaction</a>
-          <a class="dropdown-item" [routerLink]="['dashboard', 'add']">New Transaction</a>
+          <a class="dropdown-item" [routerLink]="['dashboard', 'add']" *ngIf="showLink">New Transaction</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" 
+          id="navbarDropdownMenuLink3" 
+          role="button" 
+          data-toggle="dropdown"
+          aria-haspopup="true" 
+          aria-expanded="false"
+          style="cursor: pointer;">
+          Attendees
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+          <a class="dropdown-item" [routerLink]="['attendees', 'add']">New Attendee</a>
+          <a class="dropdown-item" [routerLink]="['attendees', 'all']">List Attendees</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           Members
@@ -28,17 +44,7 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Attendees
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-          <a class="dropdown-item" href="#">New Attendee</a>
-          <a class="dropdown-item" href="#">List Attendees</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
+      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -52,7 +58,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/login">Login</a>
-      </li>
+      </li> -->
     </ul>
     <!-- <span class="navbar-text login-logout-text">
       <a routerLink="/login">Login</a>      

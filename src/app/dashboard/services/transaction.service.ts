@@ -13,6 +13,7 @@ export class TransactionService {
   defaultPageSize: number = 25;
   curPageNumber: number = 1;
   allRecords: Transaction[] = [];
+  private notifyTotalRecordByTypeObs$ = new Subject<{label: string, total: number}>();
   private allTransactions = new Subject<{records: Transaction[]}>();
 
   constructor(private _http: HttpClient) { }
@@ -45,4 +46,23 @@ export class TransactionService {
   getFilterRecord(searchFor: any) {
     
   } 
+
+  getTotalAsPerFilter(filterKey: string, filterValue: string, filteredRecord: any) {
+    if (!filterKey || !filterValue || !filteredRecord){
+      this.notifyTotalRecordByTypeObs$.next({label: "", total: 0});
+      return;
+    }
+    let total: number = 0;
+    filteredRecord.map(
+      (record: Transaction) => {
+        total = total + record.amount;
+      }
+    );
+    console.log('total ', total, filterValue);
+    this.notifyTotalRecordByTypeObs$.next({label: filterValue, total: total});
+  }
+
+  totalAsPerFilterListener() {
+    return this.notifyTotalRecordByTypeObs$.asObservable();
+  }
 }

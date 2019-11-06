@@ -30,7 +30,7 @@ export class NewTransactionComponent implements OnInit {
       'for': new FormControl(''),
       'month': new FormControl(''),
       'contributerName': new FormControl(null),
-      'details': new FormControl(null),
+      'details': new FormControl('2019 - Ningol Chakkouba - '),
       'amount': new FormControl(0)
     });
   }

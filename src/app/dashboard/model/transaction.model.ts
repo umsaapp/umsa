@@ -6,7 +6,7 @@ export interface Transaction {
     month: string;
     contributerName: string;
     details: string;
-    amount: Number;
+    amount: number;
     id?: string;
 }
 

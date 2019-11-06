@@ -28,6 +28,8 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { PaginationComponent } from './dashboard/pagination/pagination.component';
 import { FilterRecordPipe } from './shared/pipes/filter-record.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AttendeeComponent } from './attendee/attendee.component';
+import { TotalPerTypeComponent } from './dashboard/total-per-type/total-per-type.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InprogressComponent,
     FooterComponent,
     PaginationComponent,
-    FilterRecordPipe
+    FilterRecordPipe, 
+    AttendeeComponent, 
+    TotalPerTypeComponent
   ],
   imports: [
     BrowserModule,

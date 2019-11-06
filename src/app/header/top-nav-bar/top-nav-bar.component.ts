@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-nav-bar.component.css']
 })
 export class TopNavBarComponent implements OnInit {
-
+  showLink: boolean = false;
   constructor() { }
 
   ngOnInit() {
+    this.showLink = !environment.production;
   }
 
 }

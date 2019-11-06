@@ -9,6 +9,9 @@ import { NewTransactionComponent } from './dashboard/new-transaction/new-transac
 import { UpdateTransactionComponent } from './dashboard/update-transaction/update-transaction.component';
 import { ViewTransactionComponent } from './dashboard/view-transaction/view-transaction.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { NewAttendeeComponent } from './attendee/new-attendee/new-attendee.component';
+import { ViewAttendeeComponent } from './attendee/view-attendee/view-attendee.component';
+import { AttendeeComponent } from './attendee/attendee.component';
 
 const routes: Routes = [
     {
@@ -42,7 +45,21 @@ const routes: Routes = [
     },
     {
         path: 'attendees',
-        component: ListAttendeeComponent
+        component: AttendeeComponent,
+        children: [
+            {
+                path: 'add',
+                component: NewAttendeeComponent
+            }, {
+                path: 'view/:id',
+                component: ViewAttendeeComponent
+            }
+        ]
+    },
+    {
+        path: '',
+        redirectTo: '/dashboard/all',
+        pathMatch: 'full'
     }
 ];
 
